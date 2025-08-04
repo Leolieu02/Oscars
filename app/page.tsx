@@ -70,6 +70,28 @@ export default function Home() {
               de finere ting i livet. Velkommen til Oscar's.
             </p>
             
+            {/* RP Button for Tablet Only */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+              className="hidden md:block xl:hidden"
+            >
+              <a 
+                href="https://rp-alpha-ruddy.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="bg-gradient-to-r from-vintage-gold to-vintage-bronze hover:from-vintage-bronze hover:to-vintage-gold text-black px-12 py-6 text-xl font-vintage font-bold tracking-wider shadow-2xl border-2 border-vintage-gold/30"
+                >
+                  Besøk RP kebab
+                </Button>
+              </a>
+            </motion.div>
+            
             {/* <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
@@ -104,7 +126,7 @@ export default function Home() {
         >
           <div className="max-w-lg">
             <h2 className="text-5xl font-vintage font-bold mb-8 text-gold">
-            Oscar's – God Mat og Drikke i Løvenstad
+            Oscar's – God Mat og Drikke
             </h2>
             <p className="text-xl text-vintage-cream/90 mb-8 leading-relaxed font-body">
               Siden 2012 har Oscar's vært en del av byen i Løvenstads sentrum. 
@@ -242,10 +264,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-vintage font-bold mb-6 text-gold">
-              Besøk Oss I Dag
+              Kontakt Oss
             </h2>
             <p className="text-xl text-vintage-cream/90 mb-8 font-body">
-              Opplev Oscar's tidløse eleganse
+              Besøk oss i dag og opplev Oscar's tidløse atmosfære
             </p>
             
             <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -253,8 +275,8 @@ export default function Home() {
                 <div className="w-12 h-12 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-3 shadow-lg border-2 border-vintage-gold/30">
                   <MapPin className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="font-vintage font-bold mb-2 text-lg">Beliggenhet</h3>
-                <p className="text-vintage-cream/80 font-body mb-3 text-sm">Løvenstadtorget 19, 2006 Løvenstad</p>
+                <h3 className="font-vintage font-bold mb-2 text-xl">Beliggenhet</h3>
+                <p className="text-vintage-cream/80 font-body mb-6 text-lg">Løvenstadtorget 19, 2006 Løvenstad</p>
                 <a 
                   href="https://www.google.com/maps/place/R%C3%A6lingen+pizza+and+Kebab/@59.9378002,11.0186903,17z/data=!4m15!1m8!3m7!1s0x46417b52e7003b21:0x2532d37c6e16e44!2sL%C3%B8venstadtorget+19,+2006+L%C3%B8venstad!3b1!8m2!3d59.9378002!4d11.0212652!16s%2Fg%2F11tjl8mx8f!3m5!1s0x46417b52e72de047:0x623963f3e2c7d61a!8m2!3d59.9377585!4d11.0212914!16s%2Fg%2F1tftppfd?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D" 
                   target="_blank" 
@@ -269,15 +291,15 @@ export default function Home() {
                 <div className="w-12 h-12 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-3 shadow-lg border-2 border-vintage-gold/30">
                   <Clock className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="font-vintage font-bold mb-2 text-lg">Åpningstider</h3>
-                <p className="text-vintage-cream/80 font-body text-sm">Daglig<br />13:00 - 23:00</p>
+                <h3 className="font-vintage font-bold mb-2 text-xl">Åpningstider</h3>
+                <p className="text-vintage-cream/80 font-body text-lg">Man-Søn: 13:00-23:00</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-3 shadow-lg border-2 border-vintage-gold/30">
                   <Phone className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="font-vintage font-bold mb-2 text-lg">Kontakt</h3>
-                <p className="text-vintage-cream/80 font-body text-sm mb-3">+47 638 30 103</p>
+                <h3 className="font-vintage font-bold mb-2 text-xl">Kontakt</h3>
+                <p className="text-vintage-cream/80 font-body text-lg mb-6">+47 638 30 103</p>
                 <a 
                   href="tel:+4763830103"
                   className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-vintage-gold to-vintage-bronze text-black font-vintage font-bold tracking-wider rounded-lg shadow-lg border-2 border-vintage-gold/30 hover:from-vintage-bronze hover:to-vintage-gold transition-all duration-300 text-sm"

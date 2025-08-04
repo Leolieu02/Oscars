@@ -39,7 +39,12 @@ const Navbar = () => {
     if (element) {
       const targetPosition = element.offsetTop
       const startPosition = window.pageYOffset
-      const distance = targetPosition - startPosition
+      
+      // Add offset for mobile devices to account for fixed navbar
+      const isMobile = window.innerWidth < 768 // md breakpoint
+      const navbarOffset = isMobile ? 80 : 0 // 80px offset for mobile
+      
+      const distance = targetPosition - startPosition - navbarOffset
       const duration = 800 // 800ms - faster than default smooth scroll
       let start: number | null = null
 
@@ -117,19 +122,25 @@ const Navbar = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="hidden lg:flex items-center space-x-6">
-            <a 
-              href="https://rp-alpha-ruddy.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="hidden xl:flex items-center space-x-6">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <Button 
-                variant="outline" 
-                className="border-vintage-gold text-lg text-black hover:bg-vintage-gold hover:text-black transition-all duration-300 font-vintage tracking-wider shadow-lg"
+              <a 
+                href="https://rp-alpha-ruddy.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Besøk RP kebab
-              </Button>
-            </a>
+                <Button 
+                  variant="outline" 
+                  className="border-vintage-gold text-lg text-black hover:bg-vintage-gold hover:text-black transition-all duration-300 font-vintage tracking-wider shadow-lg"
+                >
+                  Besøk RP kebab
+                </Button>
+              </a>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
