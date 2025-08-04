@@ -58,10 +58,25 @@
     @apply bg-background text-foreground;
     overflow-x: hidden;
     max-width: 100vw;
+    overscroll-behavior: none;
   }
   
   body {
     position: relative;
+    min-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior-y: none;
+  }
+  
+  /* Prevent overscroll and ensure proper page ending */
+  main {
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Ensure the last section extends to the bottom */
+  section:last-child {
+    margin-bottom: 0;
   }
 }
 

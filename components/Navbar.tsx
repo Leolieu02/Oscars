@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,22 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -101,12 +118,18 @@ const Navbar = () => {
 
           {/* Contact Info */}
           <div className="hidden lg:flex items-center space-x-6">
-            {<Button 
-              variant="outline" 
-              className="border-vintage-gold text-lg text-black hover:bg-vintage-gold hover:text-black transition-all duration-300 font-vintage tracking-wider shadow-lg"
+            <a 
+              href="https://rp-alpha-ruddy.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Besøk RP kebab
-            </Button> }
+              <Button 
+                variant="outline" 
+                className="border-vintage-gold text-lg text-black hover:bg-vintage-gold hover:text-black transition-all duration-300 font-vintage tracking-wider shadow-lg"
+              >
+                Besøk RP kebab
+              </Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -127,6 +150,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={mobileMenuRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -143,6 +167,23 @@ const Navbar = () => {
                   {item.name}
                 </button>
               ))}
+              
+              {/* Mobile Contact Button */}
+              <div className="pt-4 border-t border-vintage-gold/20">
+                <a 
+                  href="https://rp-alpha-ruddy.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-vintage-gold text-black hover:bg-vintage-gold hover:text-black transition-all duration-300 font-vintage tracking-wider shadow-lg"
+                  >
+                    Besøk RP kebab
+                  </Button>
+                </a>
+              </div>
               {/* <div className="pt-4 border-t border-vintage-gold/20">
                 <div className="flex items-center space-x-2 text-vintage-gold/80 mb-3">
                   <Phone className="w-4 h-4" />

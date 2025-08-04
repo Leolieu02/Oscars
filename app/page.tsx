@@ -233,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-black text-white">
+      <section id="contact" className="py-8 bg-black text-white pt-24 flex items-center">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -241,34 +241,50 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-vintage font-bold mb-8 text-gold">
+            <h2 className="text-4xl font-vintage font-bold mb-6 text-gold">
               Besøk Oss I Dag
             </h2>
-            <p className="text-2xl text-vintage-cream/90 mb-12 font-body">
+            <p className="text-xl text-vintage-cream/90 mb-8 font-body">
               Opplev Oscar's tidløse eleganse
             </p>
             
-            <div className="grid md:grid-cols-3 gap-12 mb-12">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-4 shadow-lg border-2 border-vintage-gold/30">
-                  <MapPin className="w-8 h-8 text-black" />
+                <div className="w-12 h-12 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-3 shadow-lg border-2 border-vintage-gold/30">
+                  <MapPin className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="font-vintage font-bold mb-3 text-xl">Beliggenhet</h3>
-                <p className="text-vintage-cream/80 font-body">Løvenstadtorget 19, 2006 Løvenstad</p>
+                <h3 className="font-vintage font-bold mb-2 text-lg">Beliggenhet</h3>
+                <p className="text-vintage-cream/80 font-body mb-3 text-sm">Løvenstadtorget 19, 2006 Løvenstad</p>
+                <a 
+                  href="https://www.google.com/maps/place/R%C3%A6lingen+pizza+and+Kebab/@59.9378002,11.0186903,17z/data=!4m15!1m8!3m7!1s0x46417b52e7003b21:0x2532d37c6e16e44!2sL%C3%B8venstadtorget+19,+2006+L%C3%B8venstad!3b1!8m2!3d59.9378002!4d11.0212652!16s%2Fg%2F11tjl8mx8f!3m5!1s0x46417b52e72de047:0x623963f3e2c7d61a!8m2!3d59.9377585!4d11.0212914!16s%2Fg%2F1tftppfd?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-vintage-gold to-vintage-bronze text-black font-vintage font-bold tracking-wider rounded-lg shadow-lg border-2 border-vintage-gold/30 hover:from-vintage-bronze hover:to-vintage-gold transition-all duration-300 text-sm"
+                >
+                  <MapPin className="w-3 h-3 mr-1.5" />
+                  Se på Kart
+                </a>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-4 shadow-lg border-2 border-vintage-gold/30">
-                  <Clock className="w-8 h-8 text-black" />
+                <div className="w-12 h-12 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-3 shadow-lg border-2 border-vintage-gold/30">
+                  <Clock className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="font-vintage font-bold mb-3 text-xl">Åpningstider</h3>
-                <p className="text-vintage-cream/80 font-body">Daglig<br />13:00 - 23:00</p>
+                <h3 className="font-vintage font-bold mb-2 text-lg">Åpningstider</h3>
+                <p className="text-vintage-cream/80 font-body text-sm">Daglig<br />13:00 - 23:00</p>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-4 shadow-lg border-2 border-vintage-gold/30">
-                  <Phone className="w-8 h-8 text-black" />
+                <div className="w-12 h-12 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center mb-3 shadow-lg border-2 border-vintage-gold/30">
+                  <Phone className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="font-vintage font-bold mb-3 text-xl">Kontakt</h3>
-                <p className="text-vintage-cream/80 font-body">+47 638 30 103</p>
+                <h3 className="font-vintage font-bold mb-2 text-lg">Kontakt</h3>
+                <p className="text-vintage-cream/80 font-body text-sm mb-3">+47 638 30 103</p>
+                <a 
+                  href="tel:+4763830103"
+                  className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-vintage-gold to-vintage-bronze text-black font-vintage font-bold tracking-wider rounded-lg shadow-lg border-2 border-vintage-gold/30 hover:from-vintage-bronze hover:to-vintage-gold transition-all duration-300 text-sm"
+                >
+                  <Phone className="w-3 h-3 mr-1.5" />
+                  Ring Oss
+                </a>
               </div>
             </div>
           </motion.div>
