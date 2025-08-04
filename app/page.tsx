@@ -12,7 +12,7 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           {/* Try regular img tag first for debugging */}
@@ -92,19 +92,19 @@ export default function Home() {
       {/* Simple Separator */}
       <div className="bg-black border-t border-vintage-gold/40"></div>
 
-      {/* About Section */}
-      <section className="flex flex-col md:flex-row">
-        {/* Left Side - Text with Background */}
+      {/* Combined About and Features Section */}
+      <section id="about" className="flex flex-col md:flex-row md:flex-wrap">
+        {/* About Left Side - Text with Background */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="w-full md:w-1/2 bg-gradient-to-b from-black to-gray-900 text-white py-12 md:py-24 px-6 md:px-12 flex items-center"
+          className="w-full md:w-1/2 bg-gradient-to-b from-black to-gray-900 text-white py-12 md:py-24 px-6 md:px-12 flex items-center order-1 md:order-1"
         >
           <div className="max-w-lg">
             <h2 className="text-5xl font-vintage font-bold mb-8 text-gold">
-            Oscar’s – God Mat og Drikke i Løvenstad
+            Oscar's – God Mat og Drikke i Løvenstad
             </h2>
             <p className="text-xl text-vintage-cream/90 mb-8 leading-relaxed font-body">
               Siden 2012 har Oscar's vært en del av byen i Løvenstads sentrum. 
@@ -112,7 +112,7 @@ export default function Home() {
               den autentiske atmosfæren fra en bar.
             </p>
             <p className="text-xl text-vintage-cream/90 mb-10 leading-relaxed font-body">
-            Gjennom årene har Oscar’s vokst til å bli mer enn bare et sted å spise og drikke
+            Gjennom årene har Oscar's vokst til å bli mer enn bare et sted å spise og drikke
             – det har blitt et samlingspunkt for venner, naboer og reisende. 
             Her kan du nyte smakfulle retter laget med lokale råvarer, 
             et bredt utvalg av god øl, og et personlig vertskap. 
@@ -121,13 +121,13 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Right Side - Video Background */}
+        {/* About Right Side - Video Background */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="w-full md:w-1/2 relative overflow-hidden"
+          className="w-full md:w-1/2 relative overflow-hidden order-2 md:order-2"
         >
           <video
             autoPlay
@@ -150,51 +150,18 @@ export default function Home() {
             </div>
           </video>
         </motion.div>
-      </section>
 
-      {/* Features Section */}
-      <section className="flex flex-col md:flex-row">
-        {/* Left Side - Atmosphere Video */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="w-full md:w-1/2 relative overflow-hidden"
-        >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover min-h-screen"
-            onError={() => console.log('Atmosphere video failed to load')}
-          >
-            <source src="/videos/atmosphere.mp4" type="video/mp4" />
-            {/* Fallback for browsers that don't support video */}
-            <div className="w-full h-full">
-              <Image
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                alt="Oscar's Bar Detaljer"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </video>
-        </motion.div>
-
-        {/* Right Side - Text with Background */}
+        {/* Features Right Side - Text with Background */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="w-full md:w-1/2 bg-vintage-parchment texture-paper py-12 md:py-24 px-6 md:px-12 flex items-center"
+          className="w-full md:w-1/2 bg-vintage-parchment texture-paper py-12 md:py-24 px-6 md:px-12 flex items-center order-3 md:order-4"
         >
           <div className="max-w-lg">
             <h2 className="text-5xl font-vintage font-bold mb-8 text-black">
-              Hvorfor Velge Oscar's?
+              Hvorfor Oscar's?
             </h2>
             <p className="text-xl text-gray-700 mb-8 leading-relaxed font-body">
               Opplev den perfekte blandingen av tradisjon, håndverk og moderne sofistikasjon
@@ -233,10 +200,40 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
+
+        {/* Features Left Side - Atmosphere Video */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="w-full md:w-1/2 relative overflow-hidden order-4 md:order-3"
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover min-h-screen"
+            onError={() => console.log('Atmosphere video failed to load')}
+          >
+            <source src="/videos/atmosphere.mp4" type="video/mp4" />
+            {/* Fallback for browsers that don't support video */}
+            <div className="w-full h-full">
+              <Image
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Oscar's Bar Detaljer"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </video>
+        </motion.div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 bg-black text-white">
+      <section id="contact" className="py-24 bg-black text-white">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

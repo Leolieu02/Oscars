@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -18,10 +17,40 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const targetPosition = element.offsetTop
+      const startPosition = window.pageYOffset
+      const distance = targetPosition - startPosition
+      const duration = 800 // 800ms - faster than default smooth scroll
+      let start: number | null = null
+
+      const step = (timestamp: number) => {
+        if (!start) start = timestamp
+        const progress = timestamp - start
+        const percentage = Math.min(progress / duration, 1)
+        
+        // Easing function for smooth animation
+        const easeInOutCubic = (t: number) => 
+          t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+        
+        window.scrollTo(0, startPosition + distance * easeInOutCubic(percentage))
+        
+        if (progress < duration) {
+          requestAnimationFrame(step)
+        }
+      }
+      
+      requestAnimationFrame(step)
+    }
+    setIsOpen(false) // Close mobile menu if open
+  }
+
   const navItems = [
-    { name: 'Hjem', href: '/' },
-    { name: 'Om Oss', href: '/about' },
-    { name: 'Kontakt', href: '/contact' },
+    { name: 'Hjem', sectionId: 'hero' },
+    { name: 'Om Oss', sectionId: 'about' },
+    { name: 'Kontakt', sectionId: 'contact' },
   ]
 
   return (
@@ -35,7 +64,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <Link href="/" className="flex items-center space-x-3 group">
+            <button onClick={() => scrollToSection('hero')} className="flex items-center space-x-3 group cursor-pointer">
               <div className="w-12 h-12 bg-gradient-to-br from-vintage-gold to-vintage-bronze rounded-full flex items-center justify-center shadow-lg border-2 border-vintage-gold/30 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-black font-vintage font-bold text-xl">O</span>
               </div>
@@ -47,7 +76,7 @@ const Navbar = () => {
                   Est. 2012
                 </span>
               </div>
-            </Link>
+            </button>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -59,13 +88,13 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link
-                  href={item.href}
-                  className="text-white hover:text-vintage-gold transition-all duration-300 font-vintage font-medium tracking-wider relative group text-lg"
+                <button
+                  onClick={() => scrollToSection(item.sectionId)}
+                  className="text-white hover:text-vintage-gold transition-all duration-300 font-vintage font-medium tracking-wider relative group text-lg cursor-pointer"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-vintage-gold to-vintage-bronze transition-all duration-300 group-hover:w-full"></span>
-                </Link>
+                </button>
               </motion.div>
             ))}
           </div>
@@ -106,14 +135,13 @@ const Navbar = () => {
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item) => (
-                <Link
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="block text-white hover:text-vintage-gold transition-colors duration-300 font-vintage text-lg tracking-wider"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => scrollToSection(item.sectionId)}
+                  className="block text-white hover:text-vintage-gold transition-colors duration-300 font-vintage text-lg tracking-wider cursor-pointer w-full text-left"
                 >
                   {item.name}
-                </Link>
+                </button>
               ))}
               {/* <div className="pt-4 border-t border-vintage-gold/20">
                 <div className="flex items-center space-x-2 text-vintage-gold/80 mb-3">
