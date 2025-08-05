@@ -189,7 +189,7 @@ const Navbar = () => {
                 >
                   <Button 
                     variant="outline" 
-                    className="w-full border-vintage-gold text-black hover:bg-vintage-gold hover:text-black transition-all duration-300 font-vintage tracking-wider shadow-lg"
+                    className="w-full border-vintage-gold text-black hover:bg-vintage-gold hover:text-black transition-all duration-300 font-vintage tracking-wider shadow-lg text-xl"
                   >
                     Besøk RP kebab
                   </Button>

@@ -312,6 +312,34 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-black border-t border-vintage-gold/20">
+        <div className="max-w-5xl mx-auto px-4 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="text-vintage-cream/70 font-body text-sm mb-2">
+              © 2024 Oscar's Café & Bar Løvenstad - Alle rettigheter reservert.
+            </div>
+            <div className="text-vintage-gold/60 font-vintage text-xs tracking-wider">
+              Utviklet av{' '}
+              <a 
+                href="https://www.aiy.no/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-vintage-gold hover:text-vintage-bronze transition-colors duration-300 underline decoration-vintage-gold/40 hover:decoration-vintage-bronze"
+              >
+                aiy
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </footer>
     </main>
   )
 } 
